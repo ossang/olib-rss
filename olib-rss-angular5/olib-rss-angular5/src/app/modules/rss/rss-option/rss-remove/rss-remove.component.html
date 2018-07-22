@@ -1,0 +1,59 @@
+<div class="card">
+    <div class="card-header">
+        <i class="fa fa-table"></i> Bookmark List
+        <button (click)="editRss()" type="button" class="btn btn-outline-info active removebutton">Edit</button>
+    </div>
+    <div class="card-block">
+        <table class="table table-condensed">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>URL</th>
+                    <th>Edit</th>
+                    <th>Remove</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let bookmark of bookmarkList">
+                    <td>{{bookmark.id}}</td>
+                    <td>{{bookmark.name}}
+                        <span class="display-off" [class.display-on]="isEdit">
+                          <br><input [(ngModel)]="bookmark.name" type="text"/>
+                        </span>
+                        
+                    </td>
+                    <td>
+                      <a href="{{bookmark.url}}" target="_blank">
+                        {{bookmark.url}}
+                      </a>
+                      <span class="display-off" [class.display-on]="isEdit">
+                          <br><input class="input-url-box" [(ngModel)]="bookmark.url" type="text"/>
+                      </span>
+                    </td>
+                    <td>
+                        <span class="display-off" [class.display-on]="isEdit">
+                            <button (click)="editApplyRss(bookmark)" type="button" class="btn btn-outline-success active">Apply</button>
+                        </span>
+                    </td>
+                    <td>
+                        <span class="display-off" [class.display-on]="isEdit">
+                            <button (click)="removeRss(bookmark.id)" type="button" class="btn btn-outline-danger active">Remove</button>
+                        </span>
+                    </td>
+                </tr>
+                <tr>
+            </tbody>
+        </table>
+        <!--<ul class="pagination">
+            <li class="page-item"><a class="page-link" href="#">Prev</a></li>
+            <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+            </li>
+            <li class="page-item"><a class="page-link" href="#">2</a></li>
+            <li class="page-item"><a class="page-link" href="#">3</a></li>
+            <li class="page-item"><a class="page-link" href="#">4</a></li>
+            <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        </ul>-->
+    </div>
+</div>

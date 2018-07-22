@@ -1,0 +1,13 @@
+<div class="col-md-12">
+    <div class="row">
+      <div *ngFor="let rss of rssList" class="card col-sm-6 col-md-4 ">
+          <div class="card-header h4 feed-title">{{rss.title}}</div>
+          <div class="card-block">
+              <a href="{{rss.link}}" target="_blank">
+                <div class="feed-body" [innerHTML]="rss.description"></div>
+              </a>
+              <small class="text-muted">{{rss.pubDate}}</small>
+          </div>
+      </div>
+    </div>
+</div>

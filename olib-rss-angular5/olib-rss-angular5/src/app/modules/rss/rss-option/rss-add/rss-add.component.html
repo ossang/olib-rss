@@ -1,0 +1,16 @@
+<div class="card feed-add">
+  <div class="card-header">
+      <strong><i class="fa fa-plus"></i> Feed Item Add</strong>
+  </div>
+  <div class="card-block">
+      <div class="form-group">
+          <label for="company">Name</label>
+          <input [(ngModel)]="bookmark.name" type="text" class="form-control" id="" placeholder="Enter your feed item name">
+      </div>
+      <div class="form-group" [class.has-danger]="isErrorUrl">
+          <label for="vat">RSS URL</label> <span id="errorMessage">{{errorMessage}}</span>
+          <input [(ngModel)]="bookmark.url" type="text" class="form-control" [class.form-control-danger]="isErrorUrl" id="vat" pl aceholder="http://">
+      </div>
+      <button (click)="addRss(bookmark)" type="button" class="btn btn-primary btn-lg btn-block">SAVE</button>
+  </div>
+</div>

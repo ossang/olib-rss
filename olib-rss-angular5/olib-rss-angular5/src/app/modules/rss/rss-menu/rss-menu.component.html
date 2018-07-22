@@ -1,0 +1,10 @@
+<li class="nav-item dropdown" dropdown>
+  <a href class="nav-link dropdown-toggle" dropdownToggle (click)="false" aria-expanded="true">
+    <i class="icon-feed"></i> 
+    <span class="d-md-down-none">RSS</span>
+  </a>
+  <div class="dropdown-menu" *dropdownMenu aria-labelledby="simple-dropdown">
+    <a class="dropdown-item" href="#" routerLinkActive="active" [routerLink]="['/option/add']"><i class="fa fa-plus"></i> ADD</a>
+    <a class="dropdown-item" href="#" routerLinkActive="active" [routerLink]="['/option/remove']"><i class="fa fa-trash-o"></i> REMOVE</a>
+  </div>
+</li>

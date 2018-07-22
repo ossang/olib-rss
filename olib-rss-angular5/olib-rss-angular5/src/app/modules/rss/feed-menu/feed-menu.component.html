@@ -1,0 +1,3 @@
+<li *ngFor="let bookmark of bookmarkList" class="nav-item">
+  <a routerLinkActive="active" [routerLink]="['/rss/'+bookmark.id]"  class="nav-link"><i class="icon-feed"></i> {{bookmark.name}}</a>
+</li>

@@ -1,27 +1,34 @@
 # Olib-Rss
 
-간단하게 Rss주소를 입력하고 확인 할 수 있는 Rss Reader 사이트 입니다.
+Rss Reader site DEMO
 
-## Module description
-* olib-rss : 어플리케이션 패키지 
-* olib-rss-site : rss reader main site module 
-* olib-rss-site-core : rome api를 활용한 서비스 모듈 
-* olib-rss-site-ui : 화면 구성을 위한 모듈 
-
-## Ui description
-![olib-rss](https://cloud.githubusercontent.com/assets/8652687/23986877/c83f74f4-0a69-11e7-8930-af370a047664.png)
-* `+` 버튼 (왼쪽하단) : 신규 Rss url 추가 
-* `-` 버튼 (왼쪽하단) : Rss url 제거
-* 리스트버튼 (오른쪽상단) : 리스트 형태로 간략 Rss feed 보기 
-* 타일버튼 (오른쪽상단) : 타일 형태 Rss item 보기 
-
-## dependencies
+## olib-rss-angular1 (SERVER + UI)
 * spring-boot (1.5.2)
-* gentelella (1.3.0)
 * angularjs (1.5.5)
-* jquery (2.2.2)
+* gentelella (1.3.0)
 * bootstrap (3.3.6)
-* font-awesome (4.6.1)
+* jquery (2.2.2)
 * json-simple (1.1.1)
 * h2 (1.4.193)
+* rome (1.0)
+
+## olib-rss-angular5 (UI)
+* angular (5.2.3)
+* bootstrap (4.0.0)
+* jquery (3.0.0)
+* coreui
+
+## olib-rss-angular6 (UI)
+* angular (6.0.7)
+* angular/material (6.3.3)
+* bootstrap (4.0.0)
+* jquery (3.0.0)
+
+## olib-rss-rest (SERVER)
+* spring-boot (1.5.9)
+* spring-security
+* java (1.8)
+* springfox-swagger2 (2.7.0)
+* h2
+* jjwt (0.6.0)
 * rome (1.0)

@@ -1,0 +1,5 @@
+<mat-nav-list>
+    <a mat-list-item *ngFor="let bookmark of bookmarkList" (click)="go(bookmark.id)" >
+        <i class="icon-feed"></i> {{bookmark.name}}
+    </a>
+</mat-nav-list>

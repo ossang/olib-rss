@@ -1,0 +1,11 @@
+/.metadata/
+/.recommenders/
+*.project
+/node_modules
+.settings
+target
+.classpath
+.vscode
+log
+.DS_Store
+Thumbs.db

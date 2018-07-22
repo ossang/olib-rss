@@ -1,0 +1,39 @@
+<div class="app flex-row align-items-center">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card-group mb-0">
+          <div class="card p-4">
+            <div class="card-block">
+              <h1>Login</h1>
+              <p class="text-muted">Sign In to your account</p>
+
+
+              <p [class]="notification.msgType" *ngIf="notification">{{notification.msgBody}}</p>
+
+              <form *ngIf="!submitted" [formGroup]="form" (ngSubmit)="onSubmit()" #loginForm="ngForm">
+                <div class="input-group mb-3">
+                  <span class="input-group-addon"><i class="icon-user"></i></span>
+                  <input type="text" class="form-control" formControlName="username" required placeholder="admin" />
+                </div>
+                <div class="input-group mb-4" >
+                  <span class="input-group-addon"><i class="icon-lock"></i></span>
+                  <input type="password" class="form-control" formControlName="password" required type="password" placeholder="123" />
+                </div>
+                <div class="row">
+                  <div class="col-6">
+                    <button type="submit" [disabled]="!loginForm.form.valid" class="btn btn-primary px-4">Login</button>
+                  </div>
+                  <div class="col-6 text-right">
+                    <button routerLinkActive="active" [routerLink]="['/signup']" class="btn btn-link px-0">Signup</button>
+                  </div>
+                </div>
+              </form>
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

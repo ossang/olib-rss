@@ -1,0 +1,20 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>olib-rss-rest-core</artifactId>
+  <parent>
+  	<groupId>com.olib</groupId>
+  	<artifactId>olib-rss-rest</artifactId>
+  	<version>1.0.0-SNAPSHOT</version>
+  </parent>
+  <dependencies>
+  	<dependency>
+		<groupId>com.googlecode.json-simple</groupId>
+		<artifactId>json-simple</artifactId>
+	</dependency>
+	<dependency>
+	    <groupId>rome</groupId>
+	    <artifactId>rome</artifactId>
+	    <version>1.0</version>
+	</dependency>
+  </dependencies>
+</project>
