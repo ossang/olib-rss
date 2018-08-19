@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.olib.rss.bookmark.service.BookMarkService;
+import com.olib.rss.collector.service.RssCollectorService;
 import com.olib.rss.core.controller.AbstractOlibRestController;
 import com.olib.rss.core.model.FeedItem;
 import com.olib.rss.core.service.RssService;
@@ -27,6 +28,9 @@ public class OlibRssController extends AbstractOlibRestController<FeedItem>{
 	@Autowired
 	private BookMarkService bookmarkService;
 	
+	@Autowired
+	private RssCollectorService collectorService;
+	
 	@GetMapping(value="/{bookmarkId}")
 	public ResponseEntity<List<FeedItem>> getRssItemList(
 			@PathVariable(value = "bookmarkId") int bookmarkId
@@ -39,6 +43,17 @@ public class OlibRssController extends AbstractOlibRestController<FeedItem>{
 			return responseOkList(optFeedList.get());
 		}else{
 			return responseNotFoundList();
+		}
+	}
+	
+	@GetMapping(value="/collect")
+	public ResponseEntity<FeedItem> collectRss(){
+		
+		boolean isSuccess = collectorService.collectRss();
+		if(isSuccess) {
+			return responseOk();
+		}else {
+			return responseNotFound();
 		}
 	}
 	
