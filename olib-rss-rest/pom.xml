@@ -24,4 +24,11 @@
 	  		<artifactId>spring-boot-starter-web</artifactId>
 	  	</dependency>
   </dependencies>
+   <modules>
+   	<module>olib-rss-rest-bookmark</module>
+   	<module>olib-rss-rest-collector</module>
+   	<module>olib-rss-rest-core</module>
+   	<module>olib-rss-rest-security</module>
+   	<module>olib-rss-rest-server</module>
+   </modules>
 </project>
