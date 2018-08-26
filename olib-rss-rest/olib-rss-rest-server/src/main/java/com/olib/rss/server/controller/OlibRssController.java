@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.olib.rss.bookmark.model.BookMark;
 import com.olib.rss.bookmark.service.BookMarkService;
 import com.olib.rss.collector.service.RssCollectorService;
 import com.olib.rss.core.controller.AbstractOlibRestController;
@@ -36,14 +37,17 @@ public class OlibRssController extends AbstractOlibRestController<FeedItem>{
 			@PathVariable(value = "bookmarkId") int bookmarkId
 			){
 		
-		Optional<List<FeedItem>> optFeedList = rssService.getFeedItems(
-				bookmarkService.getBookMarkById(bookmarkId).getUrl());
+		Optional<BookMark> optBookMark = bookmarkService.getBookMarkById(bookmarkId);
 		
-		if(optFeedList.isPresent()){
-			return responseOkList(optFeedList.get());
-		}else{
-			return responseNotFoundList();
+		if(optBookMark.isPresent()) {
+			Optional<List<FeedItem>> optFeedList = rssService.getFeedItems(
+					optBookMark.get().getUrl());
+			
+			if(optFeedList.isPresent()){
+				return responseOkList(optFeedList.get());
+			}
 		}
+		return responseNotFoundList();
 	}
 	
 	@GetMapping(value="/collect")

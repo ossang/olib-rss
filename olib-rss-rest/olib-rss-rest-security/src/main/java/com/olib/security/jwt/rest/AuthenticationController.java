@@ -13,7 +13,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.mobile.device.Device;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -27,7 +26,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.olib.security.jwt.auth.JwtAuthenticationRequest;
 import com.olib.security.jwt.auth.TokenHelper;
-import com.olib.security.jwt.common.DeviceProvider;
 import com.olib.security.jwt.model.Authority;
 import com.olib.security.jwt.model.User;
 import com.olib.security.jwt.model.UserRequest;
@@ -48,14 +46,10 @@ public class AuthenticationController {
     @Autowired
     private CustomUserDetailsService userDetailsService;
 
-    @Autowired
-    private DeviceProvider deviceProvider;
-
     @RequestMapping(value = "/login", method = RequestMethod.POST)
     public ResponseEntity<?> createAuthenticationToken(
             @RequestBody JwtAuthenticationRequest authenticationRequest,
-            HttpServletResponse response,
-            Device device
+            HttpServletResponse response
     ) throws AuthenticationException, IOException {
 
         // Perform the security
@@ -71,8 +65,8 @@ public class AuthenticationController {
 
         // token creation
         User user = (User)authentication.getPrincipal();
-        String jws = tokenHelper.generateToken( user.getUsername(), device);
-        int expiresIn = tokenHelper.getExpiredIn(device);
+        String jws = tokenHelper.generateToken( user.getUsername());
+        int expiresIn = tokenHelper.getExpiredIn();
         
         List<Authority> authorityList = userDetailsService.findByUsername(user.getUsername()).getAuthorityList();
 		// Return the token
@@ -96,13 +90,11 @@ public class AuthenticationController {
 
         String authToken = tokenHelper.getToken( request );
 
-        Device device = deviceProvider.getCurrentDevice(request);
-
         if (authToken != null && principal != null) {
 
             // TODO check user password last update
-            String refreshedToken = tokenHelper.refreshToken(authToken, device);
-            int expiresIn = tokenHelper.getExpiredIn(device);
+            String refreshedToken = tokenHelper.refreshToken(authToken);
+            int expiresIn = tokenHelper.getExpiredIn();
 
             return ResponseEntity.ok(new UserTokenState(refreshedToken, expiresIn));
         } else {

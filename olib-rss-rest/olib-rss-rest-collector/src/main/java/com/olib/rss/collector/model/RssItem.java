@@ -3,6 +3,7 @@ package com.olib.rss.collector.model;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import com.olib.rss.core.model.FeedItem;
@@ -11,7 +12,7 @@ import com.olib.rss.core.model.FeedItem;
 public class RssItem {
 
 	@Id
-	@GeneratedValue
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private long id; 
 	
 	private String name;

@@ -3,8 +3,6 @@ package com.olib.rss.server.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.mobile.device.Device;
-import org.springframework.mobile.device.DevicePlatform;
 
 import com.olib.security.jwt.auth.TokenHelper;
 
@@ -36,25 +34,7 @@ public class SwaggerConfig {
      */
     @Bean
     public SecurityConfiguration security() {
-    	Device device = new Device() {
-			@Override
-			public boolean isTablet() {
-				return false;
-			}
-			@Override
-			public boolean isNormal() {
-				return true;
-			}
-			@Override
-			public boolean isMobile() {
-				return false;
-			}
-			@Override
-			public DevicePlatform getDevicePlatform() {
-				return null;
-			}
-		};
-		String token = this.tokenHelper.generateToken("admin", device);
+		String token = this.tokenHelper.generateToken("admin");
     	return new SecurityConfiguration(null, null, null, null, "Bearer "+token, ApiKeyVehicle.HEADER, "Authorization", ",");
     }
 }

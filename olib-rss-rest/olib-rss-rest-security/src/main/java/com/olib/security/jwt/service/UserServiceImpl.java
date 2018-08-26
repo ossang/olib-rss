@@ -1,6 +1,7 @@
 package com.olib.security.jwt.service;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.AccessDeniedException;
@@ -23,8 +24,11 @@ public class UserServiceImpl implements UserService {
     }
 
     public User findById( Long id ) throws AccessDeniedException {
-        User u = userRepository.findOne( id );
-        return u;
+        Optional<User> u = userRepository.findById( id );
+        if(u.isPresent()) {
+        	return u.get();
+        }
+        return null;
     }
 
     public List<User> findAll() throws AccessDeniedException {

@@ -17,15 +17,14 @@ public class BookMarkService {
 	private BookMarkRepository dao;
 	
 	public BookMark update(BookMark bookMark){
-		BookMark oldBookMark = dao.findOne(bookMark.getId());
+		Optional<BookMark> optBookMark = dao.findById((bookMark.getId()));
 		
-		if(oldBookMark != null){
-			oldBookMark.setName(bookMark.getName());
-			oldBookMark.setUrl(bookMark.getUrl());
-			return save(oldBookMark);
-		}else{
-			return save(bookMark);
+		if(optBookMark.isPresent()) {
+			optBookMark.get().setName(bookMark.getName());
+			optBookMark.get().setUrl(bookMark.getUrl());
+			return save(optBookMark.get());
 		}
+		return save(bookMark);
 	}
 	
 	public BookMark save(BookMark bookMark){
@@ -33,14 +32,14 @@ public class BookMarkService {
 	}
 	
 	public void delete(int id){
-		dao.delete(id);
+		dao.deleteById(id);
 	}
 	
 	public Optional<List<BookMark>> load(){
 		return Optional.ofNullable(dao.findAll());
 	}
 	
-	public BookMark getBookMarkById(int id){
-		return dao.findOne(id);
+	public Optional<BookMark> getBookMarkById(int id){
+		return dao.findById((id));
 	}
 }

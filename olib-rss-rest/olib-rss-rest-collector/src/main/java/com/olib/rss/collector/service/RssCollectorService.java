@@ -44,12 +44,13 @@ public class RssCollectorService {
 	private static SimpleDateFormat sdf = new SimpleDateFormat(DATE_FORMAT);
 	
 	private String convertDateString(Date date){
-		if(date == null) return null;
+		if(date == null) return sdf.format(new Date());
 		return sdf.format(date);
 	}
 	
-	private static LocalDateTime parseStringToDate(String date) {
-		return LocalDateTime.parse(date, DateTimeFormatter.ofPattern(DATE_FORMAT));
+	private Optional<LocalDateTime> parseStringToDate(String date) {
+		if(date == null || date.equals("")) return Optional.empty();
+		return Optional.ofNullable(LocalDateTime.parse(date, DateTimeFormatter.ofPattern(DATE_FORMAT)));
 
 	}
 	
@@ -76,7 +77,7 @@ public class RssCollectorService {
 		 	.forEach(rssItemList->{
 		 		saveRssItemLatest(rssItemList);
 		 		saveRssCollectHistory(rssItemList);
-		 		rssItemDao.save(rssItemList);
+		 		rssItemDao.saveAll(rssItemList);
 		 	});
 	}
 	
@@ -112,9 +113,14 @@ public class RssCollectorService {
 		if(rssItemList.size() > 0) {
 			RssItemLatest latestData = rssItemLatestDao.findByUrl(rssItemList.get(0).getUrl());
 			if(latestData == null) return true;
-			LocalDateTime updateDate = parseStringToDate(latestData.getLastBuildDate());
-			LocalDateTime compareDate = parseStringToDate(rssItemList.get(0).getLastBuildDate());
-			return updateDate.isBefore(compareDate);
+			Optional<LocalDateTime> updateDate = parseStringToDate(latestData.getLastBuildDate());
+			Optional<LocalDateTime> compareDate = parseStringToDate(rssItemList.get(0).getLastBuildDate());
+			
+			if(updateDate.isPresent() && compareDate.isPresent()) {
+				return updateDate.get().isBefore(compareDate.get());
+			}else {
+				return false;
+			}
 		}
 		return false;
 	}
