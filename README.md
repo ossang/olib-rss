@@ -25,7 +25,7 @@ Rss Reader site DEMO
 * jquery (3.0.0)
 
 ## olib-rss-rest (SERVER)
-* spring-boot (1.5.9)
+* spring-boot (2.0.4)
 * spring-security
 * java (1.8)
 * springfox-swagger2 (2.7.0)
