@@ -20,6 +20,7 @@ import com.olib.rss.collector.model.RssItemLatest;
 import com.olib.rss.collector.repository.RssCollectHistoryRepository;
 import com.olib.rss.collector.repository.RssItemLatestRepository;
 import com.olib.rss.collector.repository.RssItemRepository;
+import com.olib.rss.core.annotation.Logable;
 import com.sun.syndication.feed.synd.SyndEntryImpl;
 import com.sun.syndication.feed.synd.SyndFeed;
 import com.sun.syndication.io.SyndFeedInput;
@@ -54,6 +55,7 @@ public class RssCollectorService {
 
 	}
 	
+	@Logable
 	public boolean collectRss() {
 		try {
 			Optional<List<BookMark>> optBookMark = bookMarkService.load();
