@@ -1,5 +1,5 @@
 import { Injectable }                           from '@angular/core';
-import { HttpClient, HttpHeaders, HttpParams }  from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest, HttpEvent }  from '@angular/common/http';
 import { Router }                               from '@angular/router';
 import { Observable }                           from 'rxjs';
 import { catchError } from 'rxjs/operators';
@@ -59,6 +59,26 @@ export class ApiService {
         let me = this;
         return this.http.delete(url, { headers:this.getHeaders()})
                         .pipe(catchError((error)=>this.errorHandler(error)));
+    }
+
+    multipart(url:string, file: File) : Observable<HttpEvent<{}>>{
+        const formdata: FormData = new FormData();
+
+        formdata.append('file', file);
+
+        let token = this.getToken();
+        let authHeaders = new HttpHeaders();
+        if (token !== null) {
+            authHeaders = authHeaders.append("Authorization", "Bearer "+token);
+        }
+
+        const requestParam = new HttpRequest('POST', url, formdata, {
+            reportProgress: true,
+            responseType: 'text',
+            headers:authHeaders
+        });
+        
+        return this.http.request(requestParam);
     }
 
     errorHandler(error:any){

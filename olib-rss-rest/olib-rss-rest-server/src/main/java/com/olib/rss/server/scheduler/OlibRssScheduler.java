@@ -12,7 +12,7 @@ public class OlibRssScheduler {
 	@Autowired
 	private RssCollectorService collectorService;
 	
-	@Scheduled(cron = "*/10 * * * * ?")
+	@Scheduled(fixedDelay=1000 * 60 * 10)
 	public void collectRssSchedule() {
 		collectorService.collectRss();
 	}

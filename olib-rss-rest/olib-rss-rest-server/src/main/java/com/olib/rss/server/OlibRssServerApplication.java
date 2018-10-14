@@ -22,7 +22,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 		"com.olib.security.jwt.model",
 		"com.olib.rss.collector.model"})
 @EnableTransactionManagement
-@EnableScheduling
+//@EnableScheduling
 @EnableAspectJAutoProxy
 public class OlibRssServerApplication {
 

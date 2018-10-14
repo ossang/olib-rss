@@ -3,6 +3,8 @@ import { BreakpointObserver, Breakpoints }  from '@angular/cdk/layout';
 import { Observable }                       from 'rxjs';
 import { map }                              from 'rxjs/operators';
 import { LoginService }                     from '../login/login.service';
+import { MatDialog }                        from '@angular/material';
+import { LayoutDialogComponent }            from './layout-dialog/layout-dialog.component';
 
 @Component({
   selector: 'app-layout',
@@ -20,7 +22,8 @@ export class LayoutComponent{
     
   constructor(
     private breakpointObserver: BreakpointObserver,
-    private loginService : LoginService
+    private loginService : LoginService,
+    public dialog: MatDialog
   ) {
     this.loginUserName = this.loginService.getCurrentUserName();
   }
@@ -29,4 +32,15 @@ export class LayoutComponent{
     this.loginService.logout();
   }
 
+  upload(){
+    console.log("upload");
+  }
+  
+  openDialog() {
+    const dialogRef = this.dialog.open(LayoutDialogComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`);
+    });
+  }
 }
