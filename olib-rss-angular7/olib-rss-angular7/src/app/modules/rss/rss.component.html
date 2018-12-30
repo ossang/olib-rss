@@ -1,0 +1,17 @@
+<div class="row">
+  <nb-card *ngFor="let rss of rssList" class="col-md-4">
+    <nb-card-header>{{rss.title}}</nb-card-header>
+    <nb-card-body>
+      <a href="{{rss.link}}" target="_blank" style="color: black">
+        <div [innerHTML]="rss.description"></div>
+      </a>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="mx-auto">
+          {{rss.pubDate}} 
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</div>

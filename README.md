@@ -24,6 +24,12 @@ Rss Reader site DEMO
 * bootstrap (4.0.0)
 * jquery (3.0.0)
 
+## olib-rss-angular7 (UI)
+* angular (7.1.0)
+* nebular (3.0.0)
+* ng-bootstrap (4.0.0)
+* ngx-admin theme
+
 ## olib-rss-rest (SERVER)
 * spring-boot (2.0.4)
 * spring-security
