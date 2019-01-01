@@ -3,9 +3,16 @@ export class Bookmark{
     name : string;
     url : string;
 
-    constructor(){
-        this.id = 0;
-        this.name  = '';
-        this.url = '';
+    constructor(b){
+        if(b){
+            this.id = b.id;
+            this.name = b.name;
+            this.url = b.url;
+        }else{
+            this.id = 0;
+            this.name  = '';
+            this.url = '';
+        }
     }
+
 }

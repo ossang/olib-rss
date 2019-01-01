@@ -5,7 +5,8 @@ import { MainComponent }          from './main.component';
 const routes: Routes = [{
   path:'',component:MainComponent,
   children:[
-      { path:'rss/:id', loadChildren :'../../modules/rss/rss.module#RssModule'}
+      { path:'rss/:id', loadChildren :'../../modules/rss/rss.module#RssModule'},
+      { path:'bookmark', loadChildren :'../../modules/bookmark/bookmark.module#BookmarkModule'}
   ]
 
 }];

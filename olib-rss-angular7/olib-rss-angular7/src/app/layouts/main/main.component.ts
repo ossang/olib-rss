@@ -21,7 +21,11 @@ export class MainComponent implements OnInit {
   }
 
   initializeMenu(){
-    let submenu = new NbMenuItem();
+    this.initializeFeedMenu(); 
+  }
+
+  initializeFeedMenu(){
+    let submenu = new NbMenuItem;
     submenu.title = "Feed";
     submenu.icon ="nb-home";
 
@@ -34,6 +38,18 @@ export class MainComponent implements OnInit {
 
       submenu.children = subChildren;
       this.menu.push(submenu);
+      this.initializeToolMenu();
     });
+  }
+
+  initializeToolMenu(){
+    let submenu = new NbMenuItem;
+    submenu.title = "Tool";
+    submenu.icon = "nb-gear";
+    submenu.children = [{
+      title:'Bookmark Tool',
+      link:'/main/bookmark'
+    }];
+    this.menu.push(submenu);
   }
 }
