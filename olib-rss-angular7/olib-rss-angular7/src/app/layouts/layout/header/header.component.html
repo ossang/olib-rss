@@ -11,10 +11,11 @@
 <div class="header-container">
   <!-- <ngx-layout-direction-switcher></ngx-layout-direction-switcher> -->
   <nb-actions
-    size="medium"
-    [class.right]="position === 'normal'"
-    [class.left]="position === 'inverse'">
-    <!-- <nb-action icon="nb-gear" class="toggle-layout" (click)="toggleSettings()"></nb-action> -->
+  size="medium"
+  [class.right]="position === 'normal'"
+  [class.left]="position === 'inverse'">
+  <!-- <nb-action icon="nb-gear" class="toggle-layout" (click)="toggleSettings()"></nb-action> -->
+  <nb-action icon="nb-star" (click)="toggleFavorite()"></nb-action>
     <nb-action class="cursor" *nbIsGranted="['view', 'user']" >
       <!-- <nb-user [nbContextMenu]="userMenu" [name]="user?.name" [picture]="user?.picture"></nb-user> -->
       <nb-user [nbContextMenu]="userMenu" name="olib" ></nb-user>

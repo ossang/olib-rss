@@ -25,11 +25,12 @@
 	  	</dependency>
   </dependencies>
    <modules>
+   	<module>olib-rss-rest-core</module>
    	<module>olib-rss-rest-bookmark</module>
    	<module>olib-rss-rest-collector</module>
-   	<module>olib-rss-rest-core</module>
    	<module>olib-rss-rest-security</module>
    	<module>olib-rss-rest-server</module>
-   	
+   	<module>olib-rss-rest-upload</module>
+   	<module>olib-rss-rest-favorite</module>
    </modules>
 </project>

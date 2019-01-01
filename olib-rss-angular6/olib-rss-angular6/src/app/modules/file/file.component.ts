@@ -46,7 +46,7 @@ export class FileComponent implements OnInit {
         this.progress.percentage = Math.round(100 * event.loaded / event.total);
       } else if (event instanceof HttpResponse) {
         this.uploadList.push(event.body);
-        console.log('File is completely uploaded!');
+        // console.log('File is completely uploaded!');
       }
     });
  

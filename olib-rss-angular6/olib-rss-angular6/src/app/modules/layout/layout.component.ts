@@ -33,14 +33,14 @@ export class LayoutComponent{
   }
 
   upload(){
-    console.log("upload");
+    // console.log("upload");
   }
   
   openDialog() {
     const dialogRef = this.dialog.open(LayoutDialogComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
+      // console.log(`Dialog result: ${result}`);
     });
   }
 }

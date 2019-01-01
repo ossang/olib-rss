@@ -4,6 +4,7 @@ import { NbMenuService, NbSidebarService }  from '@nebular/theme';
 import { UserService }                      from '../../../@core/data/users.service';
 import { AnalyticsService }                 from '../../../@core/utils/analytics.service';
 import { LayoutService }                    from '../../../@core/data/layout.service';
+import { RssService }                       from 'src/app/modules/rss/rss.service';
 
 @Component({
   selector: 'olib-header',
@@ -18,11 +19,14 @@ export class HeaderComponent implements OnInit {
 
   userMenu = [{ title: 'Log out' ,link:'/auth/login'}];
 
-  constructor(private sidebarService: NbSidebarService,
-              private menuService: NbMenuService,
-              private userService: UserService,
-              private analyticsService: AnalyticsService,
-              private layoutService: LayoutService) {
+  constructor(
+    private sidebarService: NbSidebarService,
+    private menuService: NbMenuService,
+    private userService: UserService,
+    private analyticsService: AnalyticsService,
+    private layoutService: LayoutService,
+    private rssService : RssService
+    ) {
   }
 
   ngOnInit() {
@@ -49,5 +53,9 @@ export class HeaderComponent implements OnInit {
 
   startSearch() {
     this.analyticsService.trackEvent('startSearch');
+  }
+
+  toggleFavorite(){
+    this.rssService.toggleFavorite();
   }
 }

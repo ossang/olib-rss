@@ -1,6 +1,7 @@
 import { NgModule }           from '@angular/core';
 import { CommonModule }       from '@angular/common';
 import { NbCardModule }       from '@nebular/theme';
+import { DragDropModule }     from '@angular/cdk/drag-drop'; 
 
 import { RssRoutingModule }   from './rss-routing.module';
 import { RssComponent }       from './rss.component';
@@ -10,7 +11,8 @@ import { RssComponent }       from './rss.component';
   imports: [
     CommonModule,
     RssRoutingModule,
-    NbCardModule
+    NbCardModule,
+    DragDropModule
   ]
 })
 export class RssModule { }

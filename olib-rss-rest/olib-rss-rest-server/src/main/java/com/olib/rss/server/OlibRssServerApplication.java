@@ -1,7 +1,5 @@
 package com.olib.rss.server;
 
-import java.util.Scanner;
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -15,10 +13,12 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @ComponentScan({"com.olib.*"})
 @EnableJpaRepositories(basePackages ={
 		"com.olib.rss.bookmark.repository",
+		"com.olib.rss.favorite.repository",
 		"com.olib.security.jwt.repository",
 		"com.olib.rss.collector.repository"})
 @EntityScan(basePackages ={
 		"com.olib.rss.bookmark.model",
+		"com.olib.rss.favorite.model",
 		"com.olib.security.jwt.model",
 		"com.olib.rss.collector.model"})
 @EnableTransactionManagement

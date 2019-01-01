@@ -3,5 +3,6 @@ export enum UrlType{
     SIGNUP          ="/auth/signup",
     LOGOUT          ="/auth/logout",
     RSS             ="/api/rss",
-    BOOKMARK        ="/api/rss/bookmark"
+    BOOKMARK        ="/api/rss/bookmark",
+    FAVORITE        ="/api/rss/favorite"
 }

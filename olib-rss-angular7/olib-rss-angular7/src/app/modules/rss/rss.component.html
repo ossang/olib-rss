@@ -1,4 +1,4 @@
-<div class="row">
+<div [hidden]="isOpen" class="row">
   <nb-card *ngFor="let rss of rssList" class="col-md-4">
     <nb-card-header>{{rss.title}}</nb-card-header>
     <nb-card-body>
@@ -14,4 +14,45 @@
       </div>
     </nb-card-footer>
   </nb-card>
+</div>
+
+<div [hidden]="!isOpen" class="row">
+  <div cdkDropList 
+  #rssBox="cdkDropList"
+  [cdkDropListConnectedTo]="[favoriteBox]"
+  [cdkDropListData]="rssList"
+  (cdkDropListDropped)="drop($event)"
+  [cdkDropListEnterPredicate]="noReturnPredicate"
+  class="col-md-8">
+      <div class="row">
+        <nb-card cdkDrag *ngFor="let rss of rssList" class="col-md-6">
+            <nb-card-header>{{rss.title}}</nb-card-header>
+            <nb-card-body>
+              <a href="{{rss.link}}" target="_blank" style="color: black">
+                <div [innerHTML]="rss.description"></div>
+              </a>
+            </nb-card-body>
+            <nb-card-footer>
+              <div class="row">
+                <div class="mx-auto">
+                  {{rss.pubDate}} 
+                </div>
+              </div>
+            </nb-card-footer>
+          </nb-card>
+      </div>
+  </div>
+  <div class="col-md-1"></div>
+  <div cdkDropList
+  #favoriteBox="cdkDropList"
+  [cdkDropListConnectedTo]="[rssBox]"
+  [cdkDropListData]="favorite"
+  (cdkDropListDropped)="drop($event)"
+  class="col-md-3"
+  style="border: dotted"
+  >
+      <nb-card cdkDrag *ngFor="let rss of favorite" class="row">
+          <nb-card-header>{{rss.title}}</nb-card-header>
+      </nb-card>
+  </div>
 </div>

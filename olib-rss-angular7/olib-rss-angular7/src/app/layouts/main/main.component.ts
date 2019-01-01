@@ -39,6 +39,7 @@ export class MainComponent implements OnInit {
       submenu.children = subChildren;
       this.menu.push(submenu);
       this.initializeToolMenu();
+      this.initializeFavoriteMenu();
     });
   }
 
@@ -50,6 +51,14 @@ export class MainComponent implements OnInit {
       title:'Bookmark Tool',
       link:'/main/bookmark'
     }];
+    this.menu.push(submenu);
+  }
+
+  initializeFavoriteMenu(){
+    let submenu = new NbMenuItem;
+    submenu.title = "Favorite";
+    submenu.icon = "nb-star";
+    submenu.link = "/main/favorite";
     this.menu.push(submenu);
   }
 }

@@ -23,7 +23,7 @@ export class RssComponent implements OnInit {
         if(params['id']){
           this.rssId = params['id'];
           this.rssService.getRss(this.rssId).subscribe(
-            rss => {this.rssList = rss; console.log(rss)}
+            rss => {this.rssList = rss;}
           );
         }
       });
