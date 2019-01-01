@@ -11,3 +11,4 @@ log
 Thumbs.db
 .history
 .db
+package-lock.json
