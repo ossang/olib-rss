@@ -18,6 +18,7 @@ import com.olib.rss.collector.service.RssCollectorService;
 import com.olib.rss.core.controller.AbstractOlibRestController;
 import com.olib.rss.core.model.FeedItem;
 import com.olib.rss.core.service.RssService;
+import com.olib.rss.server.service.RssSummaryService;
 
 @RestController
 @RequestMapping(value="/api/rss",produces = MediaType.APPLICATION_JSON_VALUE )
@@ -31,6 +32,9 @@ public class OlibRssController extends AbstractOlibRestController<FeedItem>{
 	
 	@Autowired
 	private RssCollectorService collectorService;
+	
+	@Autowired
+	private RssSummaryService summaryService;
 	
 	@GetMapping(value="/{bookmarkId}")
 	public ResponseEntity<List<FeedItem>> getRssItemList(
@@ -60,5 +64,18 @@ public class OlibRssController extends AbstractOlibRestController<FeedItem>{
 			return responseNotFound();
 		}
 	}
+	
+	@GetMapping(value="/summary")
+	public ResponseEntity<List<FeedItem>> summary(){
+		
+		Optional<List<FeedItem>> summaryList = summaryService.getSummaryList();
+		if(summaryList.isPresent()) {
+			return responseOkList(summaryList.get());
+		}else {
+			return responseNotFoundList();
+		}
+	}
+	
+	
 	
 }

@@ -1,5 +1,5 @@
 <div [hidden]="isOpen" class="row">
-  <nb-card *ngFor="let rss of rssList" class="col-md-4">
+  <nb-card accent="primary" [size]="'medium'" *ngFor="let rss of rssList" class="col-md-4">
     <nb-card-header>{{rss.title}}</nb-card-header>
     <nb-card-body>
       <a href="{{rss.link}}" target="_blank" style="color: black">
@@ -25,7 +25,7 @@
   [cdkDropListEnterPredicate]="noReturnPredicate"
   class="col-md-8">
       <div class="row">
-        <nb-card cdkDrag *ngFor="let rss of rssList" class="col-md-6">
+        <nb-card accent="primary" [size]="'medium'" cdkDrag *ngFor="let rss of rssList" class="col-md-6">
             <nb-card-header>{{rss.title}}</nb-card-header>
             <nb-card-body>
               <a href="{{rss.link}}" target="_blank" style="color: black">
@@ -51,7 +51,7 @@
   class="col-md-3"
   style="border: dotted"
   >
-      <nb-card cdkDrag *ngFor="let rss of favorite" class="row">
+      <nb-card accent="info" cdkDrag *ngFor="let rss of favorite" class="row">
           <nb-card-header>{{rss.title}}</nb-card-header>
       </nb-card>
   </div>

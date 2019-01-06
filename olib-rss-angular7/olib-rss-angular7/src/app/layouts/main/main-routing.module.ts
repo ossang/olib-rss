@@ -7,7 +7,8 @@ const routes: Routes = [{
   children:[
       { path:'rss/:id', loadChildren :'../../modules/rss/rss.module#RssModule'},
       { path:'bookmark', loadChildren :'../../modules/bookmark/bookmark.module#BookmarkModule'},
-      { path:'favorite', loadChildren :'../../modules/favorite/favorite.module#FavoriteModule'}
+      { path:'favorite', loadChildren :'../../modules/favorite/favorite.module#FavoriteModule'},
+      { path:'summary', loadChildren :'../../modules/summary/summary.module#SummaryModule'}
   ]
 
 }];

@@ -1,0 +1,48 @@
+<nb-card accent="primary">
+  <nb-card-header>
+    Summary Feed ({{ (rssList)?rssList.length:0 }})<br><br>
+    <button (click)="sortBy('title')" nbButton size="xsmall" style="margin-right:5px;">Title sort</button>
+    <button (click)="sortBy('pubDate')" nbButton size="xsmall">PubDate sort</button>
+    <!-- <input [(ngModel)]="searchString" nbInput fullWidth fieldSize="small" style="margin-top:5px;" placeholder="Filter Title"> -->
+  </nb-card-header>
+
+  <nb-card-body>
+    <cdk-virtual-scroll-viewport itemSize="50" class="rss-viewport">
+      <nb-list>
+        <nb-list-item *cdkVirtualFor="let rss of rssObservable | async; templateCacheSize: 0 | filter : 'title' : searchString;" class="rss-item">
+          <nb-user #nbUser (click)="openDetail(dialog,rss)" [name]="rss.title" [title]="rss.pubDate" showInitials="false"
+            class="cursor">
+          </nb-user>
+        </nb-list-item>
+      </nb-list>
+    </cdk-virtual-scroll-viewport>
+  </nb-card-body>
+</nb-card>
+
+<ng-template #dialog let-rss let-ref="dialogRef" class="summary-detail row">
+  <nb-card accent="info" [size]="'medium'" class="mx-auto col-md-4" style="min-width: 480px;">
+    <nb-card-header>{{rss.title}}</nb-card-header>
+    <nb-card-body>
+      <a href="{{rss.link}}" target="_blank" style="color: black">
+        <div [innerHTML]="rss.description"></div>
+      </a>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="float-left">
+          <button (click)="addFavorite(rss)" type="button" class="btn btn-primary btn-icon btn-xs">
+            Add Favorite
+          </button>
+        </div>
+        <div class="mx-auto">
+            {{rss.pubDate}}
+        </div>
+        <div class="float-right">
+          <button (click)="ref.close()" type="button" class="btn btn-danger btn-icon btn-xs">
+            close
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</ng-template>

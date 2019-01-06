@@ -38,9 +38,14 @@ export class MainComponent implements OnInit {
 
       submenu.children = subChildren;
       this.menu.push(submenu);
-      this.initializeToolMenu();
-      this.initializeFavoriteMenu();
+      this.initializeOtherMenus();
     });
+  }
+  
+  initializeOtherMenus(){
+    this.initializeToolMenu();
+    this.initializeFavoriteMenu();
+    this.initializeSummaryMenu();
   }
 
   initializeToolMenu(){
@@ -61,4 +66,13 @@ export class MainComponent implements OnInit {
     submenu.link = "/main/favorite";
     this.menu.push(submenu);
   }
+
+  initializeSummaryMenu(){
+    let submenu = new NbMenuItem;
+    submenu.title = "Summary";
+    submenu.icon = "nb-list";
+    submenu.link = "/main/summary";
+    this.menu.push(submenu);
+  }
+
 }

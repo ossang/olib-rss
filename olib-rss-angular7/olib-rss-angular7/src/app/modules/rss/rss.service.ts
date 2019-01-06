@@ -40,4 +40,8 @@ export class RssService {
   initializeOpen(){
     this.isOpen = false;
   }
+
+  getSummary() : Observable<Rss[]>{
+    return this.apiService.get(UrlType.SUMMARY);
+  }
 }
