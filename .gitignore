@@ -1,7 +1,7 @@
 /.metadata/
 /.recommenders/
 *.project
-/node_modules
+*/node_modules
 .settings
 target
 .classpath
@@ -12,3 +12,4 @@ Thumbs.db
 .history
 .db
 package-lock.json
+*.mv.db

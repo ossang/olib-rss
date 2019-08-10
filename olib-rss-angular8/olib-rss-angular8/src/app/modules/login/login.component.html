@@ -1,0 +1,16 @@
+<h1 id="title" class="title">Login</h1>
+<p class="sub-title">Hello! Log in with your id.</p>
+
+<form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
+  <div class="form-control-group">
+      <input nbInput fullWidth placeholder="admin" name="username" ngModel>
+  </div>
+  <div class="form-control-group">
+      <input nbInput fullWidth placeholder="123" name="password" ngModel [type]="hide ? 'password' : 'text'">
+  </div>
+  <div class="row">
+    <div class="mx-auto">
+      <button nbButton status="primary" type="submit"  size="xsmall" style="margin-top: 10px;">Login</button>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,13 @@
+.rss-viewport {
+    height: 500px;
+  }
+  
+.rss-item {
+height: 50px;
+}
+
+.summary-detail:host {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }

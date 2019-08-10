@@ -1,0 +1,24 @@
+<div class="row">
+    <nb-card accent="primary" [size]="'medium'" *ngFor="let rss of rssList; let i = index;" class="col-md-4">
+      <nb-card-header>{{rss.title}}</nb-card-header>
+      <nb-card-body>
+        <a href="{{rss.link}}" target="_blank" style="color: white">
+          <div [innerHTML]="rss.description"></div>
+        </a>
+      </nb-card-body>
+      <nb-card-footer>
+        <div class="row">
+          <div class="float-left">
+            {{rss.pubDate}} 
+          </div>
+          <div class="mx-auto">
+          </div>
+          <div class="float-right">
+              <button (click)="remove(rss.id)" type="button" class="btn btn-danger btn-icon btn-xs">
+                DELETE
+              </button>
+          </div>
+        </div>
+      </nb-card-footer>
+    </nb-card>
+  </div>
